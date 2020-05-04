@@ -1,0 +1,655 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> NAME EQUALS expression END
+Rule 2     expression -> expression PLUS expression
+Rule 3     expression -> expression MINUS expression
+Rule 4     expression -> expression TIMES expression
+Rule 5     expression -> expression DIVIDE expression
+Rule 6     expression -> expression AND expression
+Rule 7     expression -> expression OR expression
+Rule 8     expression -> MINUS expression
+Rule 9     expression -> LPAREN expression RPAREN
+Rule 10    expression -> STRING
+Rule 11    expression -> NUMBER
+Rule 12    expression -> TRUE
+Rule 13    expression -> FALSE
+Rule 14    expression -> NAME
+
+Terminals, with rules where they appear
+
+AND                  : 6
+DIVIDE               : 5
+END                  : 1
+EQUALS               : 1
+FALSE                : 13
+LPAREN               : 9
+MINUS                : 3 8
+NAME                 : 1 14
+NUMBER               : 11
+OR                   : 7
+PLUS                 : 2
+RPAREN               : 9
+STRING               : 10
+TIMES                : 4
+TRUE                 : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 2 3 3 4 4 5 5 6 6 7 7 8 9
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . NAME EQUALS expression END
+
+    NAME            shift and go to state 2
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> NAME . EQUALS expression END
+
+    EQUALS          shift and go to state 3
+
+
+state 3
+
+    (1) statement -> NAME EQUALS . expression END
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 5
+
+state 4
+
+    (14) expression -> NAME .
+
+    END             reduce using rule 14 (expression -> NAME .)
+    PLUS            reduce using rule 14 (expression -> NAME .)
+    MINUS           reduce using rule 14 (expression -> NAME .)
+    TIMES           reduce using rule 14 (expression -> NAME .)
+    DIVIDE          reduce using rule 14 (expression -> NAME .)
+    AND             reduce using rule 14 (expression -> NAME .)
+    OR              reduce using rule 14 (expression -> NAME .)
+    RPAREN          reduce using rule 14 (expression -> NAME .)
+
+
+state 5
+
+    (1) statement -> NAME EQUALS expression . END
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             shift and go to state 12
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+
+state 6
+
+    (8) expression -> MINUS . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 19
+
+state 7
+
+    (9) expression -> LPAREN . expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 20
+
+state 8
+
+    (10) expression -> STRING .
+
+    END             reduce using rule 10 (expression -> STRING .)
+    PLUS            reduce using rule 10 (expression -> STRING .)
+    MINUS           reduce using rule 10 (expression -> STRING .)
+    TIMES           reduce using rule 10 (expression -> STRING .)
+    DIVIDE          reduce using rule 10 (expression -> STRING .)
+    AND             reduce using rule 10 (expression -> STRING .)
+    OR              reduce using rule 10 (expression -> STRING .)
+    RPAREN          reduce using rule 10 (expression -> STRING .)
+
+
+state 9
+
+    (11) expression -> NUMBER .
+
+    END             reduce using rule 11 (expression -> NUMBER .)
+    PLUS            reduce using rule 11 (expression -> NUMBER .)
+    MINUS           reduce using rule 11 (expression -> NUMBER .)
+    TIMES           reduce using rule 11 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 11 (expression -> NUMBER .)
+    AND             reduce using rule 11 (expression -> NUMBER .)
+    OR              reduce using rule 11 (expression -> NUMBER .)
+    RPAREN          reduce using rule 11 (expression -> NUMBER .)
+
+
+state 10
+
+    (12) expression -> TRUE .
+
+    END             reduce using rule 12 (expression -> TRUE .)
+    PLUS            reduce using rule 12 (expression -> TRUE .)
+    MINUS           reduce using rule 12 (expression -> TRUE .)
+    TIMES           reduce using rule 12 (expression -> TRUE .)
+    DIVIDE          reduce using rule 12 (expression -> TRUE .)
+    AND             reduce using rule 12 (expression -> TRUE .)
+    OR              reduce using rule 12 (expression -> TRUE .)
+    RPAREN          reduce using rule 12 (expression -> TRUE .)
+
+
+state 11
+
+    (13) expression -> FALSE .
+
+    END             reduce using rule 13 (expression -> FALSE .)
+    PLUS            reduce using rule 13 (expression -> FALSE .)
+    MINUS           reduce using rule 13 (expression -> FALSE .)
+    TIMES           reduce using rule 13 (expression -> FALSE .)
+    DIVIDE          reduce using rule 13 (expression -> FALSE .)
+    AND             reduce using rule 13 (expression -> FALSE .)
+    OR              reduce using rule 13 (expression -> FALSE .)
+    RPAREN          reduce using rule 13 (expression -> FALSE .)
+
+
+state 12
+
+    (1) statement -> NAME EQUALS expression END .
+
+    $end            reduce using rule 1 (statement -> NAME EQUALS expression END .)
+
+
+state 13
+
+    (2) expression -> expression PLUS . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 21
+
+state 14
+
+    (3) expression -> expression MINUS . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 22
+
+state 15
+
+    (4) expression -> expression TIMES . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 23
+
+state 16
+
+    (5) expression -> expression DIVIDE . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 24
+
+state 17
+
+    (6) expression -> expression AND . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 25
+
+state 18
+
+    (7) expression -> expression OR . expression
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . expression AND expression
+    (7) expression -> . expression OR expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . LPAREN expression RPAREN
+    (10) expression -> . STRING
+    (11) expression -> . NUMBER
+    (12) expression -> . TRUE
+    (13) expression -> . FALSE
+    (14) expression -> . NAME
+
+    MINUS           shift and go to state 6
+    LPAREN          shift and go to state 7
+    STRING          shift and go to state 8
+    NUMBER          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 26
+
+state 19
+
+    (8) expression -> MINUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             reduce using rule 8 (expression -> MINUS expression .)
+    PLUS            reduce using rule 8 (expression -> MINUS expression .)
+    MINUS           reduce using rule 8 (expression -> MINUS expression .)
+    TIMES           reduce using rule 8 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 8 (expression -> MINUS expression .)
+    AND             reduce using rule 8 (expression -> MINUS expression .)
+    OR              reduce using rule 8 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 8 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 20
+
+    (9) expression -> LPAREN expression . RPAREN
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    RPAREN          shift and go to state 27
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+
+state 21
+
+    (2) expression -> expression PLUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             reduce using rule 2 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 2 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 2 (expression -> expression PLUS expression .)
+    AND             reduce using rule 2 (expression -> expression PLUS expression .)
+    OR              reduce using rule 2 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 2 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+
+  ! TIMES           [ reduce using rule 2 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 2 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 22
+
+    (3) expression -> expression MINUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             reduce using rule 3 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 3 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 3 (expression -> expression MINUS expression .)
+    AND             reduce using rule 3 (expression -> expression MINUS expression .)
+    OR              reduce using rule 3 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 3 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+
+  ! TIMES           [ reduce using rule 3 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 3 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 23
+
+    (4) expression -> expression TIMES expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             reduce using rule 4 (expression -> expression TIMES expression .)
+    PLUS            reduce using rule 4 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 4 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 4 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 4 (expression -> expression TIMES expression .)
+    AND             reduce using rule 4 (expression -> expression TIMES expression .)
+    OR              reduce using rule 4 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 4 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 24
+
+    (5) expression -> expression DIVIDE expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+    END             reduce using rule 5 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 5 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 5 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 5 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 5 (expression -> expression DIVIDE expression .)
+    AND             reduce using rule 5 (expression -> expression DIVIDE expression .)
+    OR              reduce using rule 5 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 5 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 25
+
+    (6) expression -> expression AND expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    END             reduce using rule 6 (expression -> expression AND expression .)
+    RPAREN          reduce using rule 6 (expression -> expression AND expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+  ! PLUS            [ reduce using rule 6 (expression -> expression AND expression .) ]
+  ! MINUS           [ reduce using rule 6 (expression -> expression AND expression .) ]
+  ! TIMES           [ reduce using rule 6 (expression -> expression AND expression .) ]
+  ! DIVIDE          [ reduce using rule 6 (expression -> expression AND expression .) ]
+  ! AND             [ reduce using rule 6 (expression -> expression AND expression .) ]
+  ! OR              [ reduce using rule 6 (expression -> expression AND expression .) ]
+
+
+state 26
+
+    (7) expression -> expression OR expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+    (6) expression -> expression . AND expression
+    (7) expression -> expression . OR expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    END             reduce using rule 7 (expression -> expression OR expression .)
+    RPAREN          reduce using rule 7 (expression -> expression OR expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+  ! PLUS            [ reduce using rule 7 (expression -> expression OR expression .) ]
+  ! MINUS           [ reduce using rule 7 (expression -> expression OR expression .) ]
+  ! TIMES           [ reduce using rule 7 (expression -> expression OR expression .) ]
+  ! DIVIDE          [ reduce using rule 7 (expression -> expression OR expression .) ]
+  ! AND             [ reduce using rule 7 (expression -> expression OR expression .) ]
+  ! OR              [ reduce using rule 7 (expression -> expression OR expression .) ]
+
+
+state 27
+
+    (9) expression -> LPAREN expression RPAREN .
+
+    END             reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    AND             reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    OR              reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 9 (expression -> LPAREN expression RPAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 25 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 25 resolved as shift
+WARNING: shift/reduce conflict for AND in state 25 resolved as shift
+WARNING: shift/reduce conflict for OR in state 25 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 26 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 26 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 26 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 26 resolved as shift
+WARNING: shift/reduce conflict for AND in state 26 resolved as shift
+WARNING: shift/reduce conflict for OR in state 26 resolved as shift
